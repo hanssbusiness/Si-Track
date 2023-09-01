@@ -53,7 +53,11 @@
                                     <td><div class="badge badge-success">Aktif</div></td>
                                     <td><a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
                                         <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></a>
-                                        <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('clases.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -75,7 +79,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="{{ route('clases.store')}}" method="POST">
                     @csrf
                 <div class="form-group">
                     <label>Class Class</label>

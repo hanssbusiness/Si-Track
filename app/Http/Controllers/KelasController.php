@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clases;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -36,7 +37,20 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'code'   => 'required|unique:clases',
+            'name' => 'required',
+            'capacity' => 'required',
+        ]);
+        
+        $class = new Clases;
+        $class->uuid = Str::uuid();
+        $class->code = $request->get('code');
+        $class->name = $request->get('name');
+        $class->capacity = $request->get('capacity');
+
+        $class->save();
+        return redirect()->route('clases.index');
     }
 
     /**
@@ -81,6 +95,7 @@ class KelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Clases::where('id', $id)->delete();
+        return redirect()->route('clases.index');
     }
 }
