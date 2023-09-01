@@ -45,13 +45,13 @@
                                     <td>{{$item->code}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->capacity}}</td>
-                                    <td>3</td>
+                                    <td>-</td>
                                     <td class="align-middle">
                                         <div class="progress progress-bar bg-success" data-width="80" data-height="5" data-toggle="tooltip" title="80%">
                                         </div>
                                     </td>
                                     <td><div class="badge badge-success">Aktif</div></td>
-                                    <td><a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"></i></a>
+                                    <td><a href="#" class="btn btn-icon btn-info" data-toggle="modal" data-target="#info-{{$item->uuid}}"><i class="fas fa-info-circle"></i></a>
                                         <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-exclamation-triangle"></i></a>
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('clases.destroy', $item->id) }}" method="POST">
                                             @csrf
@@ -98,4 +98,27 @@
         </div>
         </div>
 </div>
+@foreach ($kelas as $info)
+<div class="modal fade" tabindex="-1" role="dialog" id="info-{{$info->uuid}}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Kelas {{$info->name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>Class Code : {{$info->code}}</p>
+                <p>Class Name : {{$info->name}}</p>
+                <p>Class Capacity : {{$info->capacity}}</p>
+            </div>
+            <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </form>
+            </div>
+        </div>
+        </div>
+</div>
+@endforeach
 @endsection
