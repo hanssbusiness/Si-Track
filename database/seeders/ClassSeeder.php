@@ -24,5 +24,17 @@ class ClassSeeder extends Seeder
             'name' => 'X-IPA-1',
             'capacity' => 30,
         ]);
+        Clases::create([
+            'uuid' => Str::uuid(),
+            'code' => 'IPA2021-2',
+            'name' => 'X-IPA-2',
+            'capacity' => 30,
+        ]);
+        Clases::create([
+            'uuid' => Str::uuid(),
+            'code' => 'IPA2021-3',
+            'name' => 'X-IPA-3',
+            'capacity' => 30,
+        ]);
     }
 }
