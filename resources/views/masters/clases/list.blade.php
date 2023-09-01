@@ -23,7 +23,7 @@
                         <h4>Data Kelas</h4>
                         <div class="card-header-form">
                             <a href="#" class="btn btn-info"><i class="fa fa-light fa-file-import"></i> Import Data</a>
-                            <a href="#" class="btn btn-primary"><i class="far fa-edit"></i> Tambah Data</a>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addData"><i class="far fa-edit"></i> Tambah Data</a>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -65,4 +65,33 @@
         </div>
     </div>
 </section>
+<div class="modal fade" tabindex="-1" role="dialog" id="addData">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Add Data Class</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    @csrf
+                <div class="form-group">
+                    <label>Class Class</label>
+                    <input type="text" name="code" class="form-control" placeholder="Input Class Code">
+                    <label>Class Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Input Class Name">
+                    <label>Class Capacity</label>
+                    <input type="number" name="capacity" class="form-control" placeholder="Input Class Capacity">
+                </div>
+            </div>
+            <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+            </div>
+        </div>
+        </div>
+</div>
 @endsection
